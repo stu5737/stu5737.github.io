@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <title>Solefood 隱私政策 · Privacy Policy</title>
+    <meta name="description" content="Solefood — GPS 步行採集遊戲的隱私政策。詳細說明資料收集、處理、第三方共享與用戶權利。">
+    <link rel="canonical" href="https://stu5737.github.io/solefood/privacy/">
+    <style>
+      * { box-sizing: border-box; }
+      :root {
+        --bg: #0F172A;
+        --bg-card: #1E293B;
+        --text: #E2E8F0;
+        --text-dim: #94A3B8;
+        --accent: #3B82F6;
+        --rule: #334155;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", Roboto, sans-serif;
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+      }
+      .wrap {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 2rem 1.25rem 4rem;
+      }
+      h1 {
+        font-size: 1.75rem;
+        font-weight: 800;
+        margin: 0 0 0.5rem;
+        color: #F1F5F9;
+      }
+      h2 {
+        margin-top: 2.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid var(--rule);
+        font-size: 1.35rem;
+      }
+      h3 {
+        margin-top: 1.75rem;
+        font-size: 1.1rem;
+        color: #F1F5F9;
+      }
+      h4 {
+        margin-top: 1.25rem;
+        font-size: 1rem;
+      }
+      p, ul, ol, li {
+        font-size: 0.96rem;
+        color: var(--text);
+      }
+      ul, ol { padding-left: 1.25rem; }
+      li { margin: 0.3rem 0; }
+      a {
+        color: var(--accent);
+        text-decoration: underline;
+      }
+      strong { color: #F1F5F9; }
+      em { font-style: normal; color: var(--text-dim); }
+      hr {
+        border: 0;
+        border-top: 1px solid var(--rule);
+        margin: 2rem 0;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+        font-size: 0.9rem;
+        background: var(--bg-card);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      th, td {
+        padding: 0.6rem 0.8rem;
+        text-align: left;
+        border-bottom: 1px solid var(--rule);
+      }
+      th { background: rgba(59, 130, 246, 0.12); font-weight: 700; }
+      tr:last-child td { border-bottom: 0; }
+      code {
+        background: var(--bg-card);
+        padding: 0.1rem 0.4rem;
+        border-radius: 4px;
+        font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+        font-size: 0.85rem;
+        color: #93C5FD;
+      }
+      .meta {
+        color: var(--text-dim);
+        font-size: 0.85rem;
+        margin: 0 0 1rem;
+      }
+      .lang-switch {
+        margin: 1.5rem 0;
+        display: flex;
+        gap: 0.5rem;
+      }
+      .lang-switch a {
+        background: var(--bg-card);
+        padding: 0.4rem 0.9rem;
+        border-radius: 999px;
+        text-decoration: none;
+        font-size: 0.85rem;
+        border: 1px solid var(--rule);
+      }
+    </style>
+  </head>
+  <body>
+    <article class="wrap">
+      <h1>Solefood Privacy Policy</h1>
+      <p class="meta"><strong>最後更新 · Last updated</strong>: 2026-05-15</p>
+      <div class="lang-switch">
+        <a href="#zh">中文</a>
+        <a href="#en">English</a>
+      </div>
+
+      <hr>
+
+      <h2 id="zh">中文版</h2>
+
+      <h3>一、誰是這份政策的對象</h3>
+      <p>Solefood（以下稱「本 App」）是一款以真實步行 GPS 軌跡驅動的遊戲。本政策說明本 App 收集哪些資料、為什麼收集、如何儲存與分享，以及你可以如何控制這些資料。</p>
+      <p>本 App 由 Yuming Liao（個人開發者）開發與維運,聯絡信箱:<br><strong>stepnxadidas@gmail.com</strong></p>
+
+      <h3>二、我們收集的資料</h3>
+      <p>本 App 為了核心玩法與遊戲穩定性,會收集以下類別的資料:</p>
+
+      <h4>2.1 精確 GPS 位置與軌跡(必要)</h4>
+      <ul>
+        <li><strong>收集內容</strong>:經緯度、時間戳、GPS 精度、行動速度、行動方向</li>
+        <li><strong>收集時機</strong>:採集模式啟動後持續收集(前景 + 背景)</li>
+        <li><strong>為什麼</strong>:
+          <ul>
+            <li>計算你的步行距離(遊戲核心進度指標)</li>
+            <li>在真實地圖上呈現你的採集路徑</li>
+            <li>偵測你進入特定區域以觸發採集事件</li>
+            <li>偵測 GPS 模擬器、車輛速度等作弊行為</li>
+          </ul>
+        </li>
+        <li><strong>儲存位置</strong>:
+          <ul>
+            <li>本機 SQLite 資料庫(<code>gps_trail.db</code>):永久保留軌跡點供軌跡重繪</li>
+            <li>雲端伺服器:加密上傳,與你的用戶代號(<code>SF-XXXXXX</code>)關聯</li>
+          </ul>
+        </li>
+        <li><strong>保留期間</strong>:帳號活躍期間;刪除帳號後 30 日內清除</li>
+      </ul>
+
+      <h4>2.2 步數與活動類型(必要)</h4>
+      <ul>
+        <li><strong>收集內容</strong>:每分鐘步數、活動狀態(walking / running / vehicle / stationary)</li>
+        <li><strong>收集時機</strong>:採集模式期間</li>
+        <li><strong>為什麼</strong>:反作弊。驗證你的移動是真實步行而非車輛或 GPS 模擬。</li>
+        <li><strong>儲存位置</strong>:<strong>僅本機處理</strong>,不上傳原始感測資料;只上傳「是否作弊」的二元判定結果作為遊戲事件</li>
+        <li><strong>iOS 來源</strong>:HealthKit + Core Motion</li>
+        <li><strong>Android 來源</strong>:Activity Recognition API + Sensor API</li>
+      </ul>
+
+      <h4>2.3 HealthKit Workout Session(iOS 限定,必要)</h4>
+      <ul>
+        <li><strong>收集內容</strong>:本 App 主動「建立」一個 Workout Session,類型為 Outdoor Walk</li>
+        <li><strong>收集時機</strong>:採集模式啟動時建立、結束時關閉</li>
+        <li><strong>為什麼</strong>:HealthKit Workout Session 讓 iOS 系統知道使用者正在運動,保持 App 在背景活躍,避免被 Jetsam 機制終止</li>
+        <li><strong>儲存位置</strong>:<strong>僅本機儲存</strong>(Apple 健康 App 內),本 App 不讀取也不上傳</li>
+        <li><strong>可選</strong>:你可以在 Apple 健康 App → 共享 → 應用程式中關閉此授權;關閉後採集模式會改用備援機制(背景採集成功率會略降)</li>
+      </ul>
+
+      <h4>2.4 相機拍攝的食材照片(選用)</h4>
+      <ul>
+        <li><strong>收集內容</strong>:你主動觸發相機拍攝的食材照片</li>
+        <li><strong>收集時機</strong>:你在卸貨流程內主動按下「拍照」按鈕時</li>
+        <li><strong>為什麼</strong>:作為遊戲採集紀錄與活動兌獎憑證</li>
+        <li><strong>儲存位置</strong>:上傳至 Solefood 雲端伺服器,與你的用戶代號關聯</li>
+        <li><strong>不收集</strong>:相簿內的其他照片、EXIF 資訊(如位置)</li>
+      </ul>
+
+      <h4>2.5 用戶代號與設定(必要)</h4>
+      <ul>
+        <li><strong>收集內容</strong>:
+          <ul>
+            <li>用戶代號(首次安裝隨機產生,格式 <code>SF-XXXXXX</code>)</li>
+            <li>遊戲設定偏好(語言、教學完成標記)</li>
+            <li>帳號綁定資訊(僅在你主動綁定 email 後)</li>
+          </ul>
+        </li>
+        <li><strong>儲存位置</strong>:本機 AsyncStorage(裝置端);帳號綁定後同步至雲端伺服器</li>
+        <li><strong>為什麼</strong>:辨識同一裝置的回訪使用者、跨裝置同步進度(綁定後)</li>
+      </ul>
+
+      <h4>2.6 崩潰與錯誤診斷資料(選用 / 第三方)</h4>
+      <ul>
+        <li><strong>收集內容</strong>:App 崩潰堆疊追蹤、錯誤日誌、裝置型號、OS 版本、GPS session metadata(不含座標)</li>
+        <li><strong>收集時機</strong>:App 發生崩潰或關鍵錯誤時</li>
+        <li><strong>為什麼</strong>:修復 App 問題、提升穩定性</li>
+        <li><strong>傳輸對象</strong>:<strong>Sentry</strong>(Functional Software, Inc., <a href="https://sentry.io">sentry.io</a>)
+          <ul>
+            <li>Sentry 隱私政策:<a href="https://sentry.io/privacy/">https://sentry.io/privacy/</a></li>
+          </ul>
+        </li>
+        <li><strong>儲存位置</strong>:Sentry 雲端,與你的用戶代號關聯(<strong>匿名化處理</strong>,不包含 email 或真實姓名)</li>
+        <li><strong>可選 / 預設關閉</strong>:本 App 預設關閉錯誤回報;需在「設定 → 崩潰與錯誤回報」主動開啟才會上傳</li>
+      </ul>
+
+      <h3>三、我們不會做的事</h3>
+      <ul>
+        <li><strong>不會</strong>販售你的任何資料給第三方廣告商</li>
+        <li><strong>不會</strong>做跨 App 追蹤(<code>NSPrivacyTracking: false</code>)</li>
+        <li><strong>不會</strong>讀取你的聯絡人、通話紀錄、簡訊、瀏覽紀錄</li>
+        <li><strong>不會</strong>錄音(麥克風權限僅供未來語音功能保留,目前未使用)</li>
+        <li><strong>不會</strong>讀取相簿內的其他照片(僅相機拍攝即時上傳)</li>
+        <li><strong>不會</strong>在沒有你明確同意的情況下顯示廣告</li>
+      </ul>
+
+      <h3>四、第三方資料接收方</h3>
+      <table>
+        <thead>
+          <tr><th>服務</th><th>用途</th><th>資料類型</th><th>隱私政策</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Sentry</td><td>崩潰與錯誤診斷</td><td>匿名化錯誤資料</td><td><a href="https://sentry.io/privacy/">連結</a></td></tr>
+          <tr><td>Mapbox</td><td>地圖渲染</td><td>IP(不含 GPS 軌跡)</td><td><a href="https://www.mapbox.com/legal/privacy">連結</a></td></tr>
+          <tr><td>Apple App Store</td><td>App 下載與 IAP(未來啟用)</td><td>由 Apple 處理</td><td><a href="https://www.apple.com/legal/privacy/">連結</a></td></tr>
+          <tr><td>Google Play</td><td>App 下載與 IAP(未來啟用)</td><td>由 Google 處理</td><td><a href="https://policies.google.com/privacy">連結</a></td></tr>
+        </tbody>
+      </table>
+
+      <h3>五、你的權利</h3>
+      <p>你可以行使以下權利(依 GDPR / CCPA / 台灣個資法):</p>
+      <ul>
+        <li><strong>查閱權</strong>:請求查閱我們持有你的所有個人資料</li>
+        <li><strong>更正權</strong>:請求更正不正確的資料</li>
+        <li><strong>刪除權</strong>:請求刪除你的帳號與所有關聯資料(30 日內完成)</li>
+        <li><strong>資料可攜權</strong>:請求以 JSON 格式匯出你的遊戲資料</li>
+        <li><strong>撤回同意權</strong>:撤回先前的同意(部分權限撤回後 App 將無法繼續採集)</li>
+      </ul>
+      <p>聯絡方式:寄信至 <strong>stepnxadidas@gmail.com</strong>,主旨註明「Solefood 個資請求」</p>
+
+      <h3>六、未成年使用者</h3>
+      <p>本 App 不主動對 13 歲以下兒童行銷,不收集針對兒童的特殊資料。若你發現未成年人未經同意使用本 App,請聯絡我們刪除其資料。</p>
+
+      <h3>七、$WaWa 代幣與遊戲內貨幣聲明</h3>
+      <ul>
+        <li><strong>$WaWa 是純遊戲內代幣</strong>,僅供遊戲機制使用</li>
+        <li><strong>不能</strong>用真實貨幣購買</li>
+        <li><strong>不能</strong>兌換為真實貨幣或實體商品</li>
+        <li><strong>不能</strong>轉移至其他用戶</li>
+        <li>內部估值計算(如「距離 → 代幣」轉換比例)僅供遊戲平衡參數使用,不代表任何貨幣價值</li>
+      </ul>
+
+      <h3>八、變更通知</h3>
+      <p>本政策修改時,我們會在 App 內顯示更新提示,並要求你重新檢視。重大變更(例如新增資料類別、新增第三方接收方)需要你主動再同意。</p>
+
+      <h3>九、爭議處理</h3>
+      <p>若你對本政策有疑慮,請先聯絡 <strong>stepnxadidas@gmail.com</strong>。若無法獲得滿意解決,依當地法律(台灣 / 你所在司法管轄區)申訴。</p>
+
+      <hr>
+
+      <h2 id="en">English Version</h2>
+
+      <h3>1. Who This Policy Applies To</h3>
+      <p>Solefood (hereinafter "the App") is a walking game driven by real-world GPS trails. This policy describes what data the App collects, why it collects them, how they are stored and shared, and how you can control them.</p>
+      <p>The App is developed and operated by <strong>Yuming Liao</strong> (independent developer). Contact: <strong>stepnxadidas@gmail.com</strong></p>
+
+      <h3>2. Data We Collect</h3>
+      <p>The App collects the following data for core gameplay and stability:</p>
+
+      <h4>2.1 Precise GPS Location and Trail (Required)</h4>
+      <ul>
+        <li><strong>What</strong>: Latitude/longitude, timestamps, GPS accuracy, speed, heading</li>
+        <li><strong>When</strong>: Continuously during foraging mode (foreground + background)</li>
+        <li><strong>Why</strong>:
+          <ul>
+            <li>Calculate walking distance (core gameplay progress)</li>
+            <li>Render your foraging path on the in-game map</li>
+            <li>Trigger zone-based foraging events</li>
+            <li>Detect GPS spoofing, vehicle-speed cheating</li>
+          </ul>
+        </li>
+        <li><strong>Stored at</strong>: On-device SQLite (<code>gps_trail.db</code>) — kept for trail replay; Cloud server — encrypted, linked to your user ID (<code>SF-XXXXXX</code>)</li>
+        <li><strong>Retention</strong>: While the account is active; deleted within 30 days of account deletion</li>
+      </ul>
+
+      <h4>2.2 Step Count and Activity Type (Required)</h4>
+      <ul>
+        <li><strong>What</strong>: Steps per minute, activity state (walking / running / vehicle / stationary)</li>
+        <li><strong>When</strong>: During foraging mode</li>
+        <li><strong>Why</strong>: Anti-cheat. Verify that movement is real walking, not vehicle or GPS simulator.</li>
+        <li><strong>Stored at</strong>: <strong>On-device only</strong>. Raw sensor data is never uploaded. Only the boolean "cheat detected" result is sent as a game event.</li>
+      </ul>
+
+      <h4>2.3 HealthKit Workout Session (iOS only, Required)</h4>
+      <ul>
+        <li><strong>What</strong>: The App creates a Workout Session (type: Outdoor Walk)</li>
+        <li><strong>Why</strong>: Keeps iOS aware that the user is exercising, preventing Jetsam from terminating the App in background</li>
+        <li><strong>Stored at</strong>: <strong>On-device only</strong> (in Apple Health app). The App does not read your Health data or upload it.</li>
+      </ul>
+
+      <h4>2.4 Camera Photos of Foraged Items (Optional)</h4>
+      <ul>
+        <li><strong>What</strong>: Photos you actively capture during the unload flow</li>
+        <li><strong>Why</strong>: Foraging records and event reward proofs</li>
+        <li><strong>Stored at</strong>: Uploaded to Solefood cloud servers, linked to your user ID</li>
+        <li><strong>Not collected</strong>: Other photos in your library; EXIF metadata (including location)</li>
+      </ul>
+
+      <h4>2.5 User ID and Preferences (Required)</h4>
+      <p>User ID, game preferences, account binding info. Stored on-device (AsyncStorage); synced to cloud only after account binding.</p>
+
+      <h4>2.6 Crash and Error Diagnostics (Optional / Third Party)</h4>
+      <ul>
+        <li><strong>Sent to</strong>: <strong>Sentry</strong> (Functional Software, Inc., <a href="https://sentry.io">sentry.io</a>)</li>
+        <li><strong>Optional / Off by default</strong>: Crash reporting is OFF by default; you must actively enable it in Settings → Crash and Error Reports.</li>
+      </ul>
+
+      <h3>3. What We Do NOT Do</h3>
+      <ul>
+        <li>We do <strong>NOT</strong> sell your data to third-party advertisers</li>
+        <li>We do <strong>NOT</strong> track you across other apps (<code>NSPrivacyTracking: false</code>)</li>
+        <li>We do <strong>NOT</strong> read your contacts, call logs, SMS, or browsing history</li>
+        <li>We do <strong>NOT</strong> record audio (microphone permission reserved for future voice features, currently unused)</li>
+        <li>We do <strong>NOT</strong> read other photos in your library (only camera-captured photos, uploaded in real time)</li>
+        <li>We do <strong>NOT</strong> show ads without your explicit consent</li>
+      </ul>
+
+      <h3>4. Third-Party Data Recipients</h3>
+      <table>
+        <thead><tr><th>Service</th><th>Purpose</th><th>Data Type</th><th>Privacy</th></tr></thead>
+        <tbody>
+          <tr><td>Sentry</td><td>Crash &amp; error diagnostics</td><td>Anonymized error data</td><td><a href="https://sentry.io/privacy/">link</a></td></tr>
+          <tr><td>Mapbox</td><td>Map rendering</td><td>IP address (no GPS trails)</td><td><a href="https://www.mapbox.com/legal/privacy">link</a></td></tr>
+          <tr><td>Apple App Store</td><td>App distribution &amp; IAP (future)</td><td>Handled by Apple</td><td><a href="https://www.apple.com/legal/privacy/">link</a></td></tr>
+          <tr><td>Google Play</td><td>App distribution &amp; IAP (future)</td><td>Handled by Google</td><td><a href="https://policies.google.com/privacy">link</a></td></tr>
+        </tbody>
+      </table>
+
+      <h3>5. Your Rights</h3>
+      <p>You have the following rights (per GDPR / CCPA / Taiwan PDPA):</p>
+      <ul>
+        <li><strong>Right of access</strong>: Request access to all personal data we hold about you</li>
+        <li><strong>Right to rectification</strong>: Request correction of inaccurate data</li>
+        <li><strong>Right to erasure</strong>: Request deletion of your account and all linked data (within 30 days)</li>
+        <li><strong>Right to data portability</strong>: Request export of your game data as JSON</li>
+        <li><strong>Right to withdraw consent</strong>: Withdraw prior consent (some permissions, once revoked, will prevent the App from continuing to forage)</li>
+      </ul>
+      <p>Contact: email <strong>stepnxadidas@gmail.com</strong> with subject "Solefood Privacy Request"</p>
+
+      <h3>6. Minors</h3>
+      <p>The App does not market to children under 13 and does not collect data specifically about children. If you believe a minor is using the App without consent, please contact us to delete their data.</p>
+
+      <h3>7. $WaWa Tokens and In-Game Currency Disclaimer</h3>
+      <ul>
+        <li><strong>$WaWa is purely an in-game token</strong> used only by game mechanics</li>
+        <li><strong>Cannot</strong> be purchased with real money</li>
+        <li><strong>Cannot</strong> be exchanged for real currency or physical goods</li>
+        <li><strong>Cannot</strong> be transferred to other users</li>
+        <li>Internal valuation calculations are game-balance parameters only and do not represent any monetary value</li>
+      </ul>
+
+      <h3>8. Notice of Changes</h3>
+      <p>When we update this policy, we will display an in-app notice and ask you to review. Material changes (e.g., new data categories, new third-party recipients) require fresh, active consent.</p>
+
+      <h3>9. Disputes</h3>
+      <p>If you have concerns about this policy, please first email <strong>stepnxadidas@gmail.com</strong>. If you cannot reach a satisfactory resolution, you may file a complaint under the applicable law of your jurisdiction (Taiwan / your country of residence).</p>
+
+      <hr>
+
+      <p class="meta">
+        <strong>Document version</strong>: 1.0 ·
+        <strong>Effective</strong>: 2026-05-15 ·
+        Source: <a href="https://github.com/stu5737/solefood/blob/main/PRIVACY.md">PRIVACY.md</a> ·
+        <a href="https://stu5737.github.io/solefood/terms/">服務條款 · Terms of Service</a>
+      </p>
+    </article>
+  </body>
+</html>
