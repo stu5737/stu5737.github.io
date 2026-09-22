@@ -115,7 +115,13 @@
   <body>
     <article class="wrap">
       <h1>Solefood Privacy Policy</h1>
-      <p class="meta"><strong>最後更新 · Last updated</strong>: 2026-05-15</p>
+      <p class="meta"><strong>最後更新 · Last updated</strong>: 2026-09-20 ·
+        <strong>版本 · Version</strong>: 2.0</p>
+      <p class="meta">2.0 的改動:依 2026-09-19 內部稽核,把原先聲稱定位資料只留在這支手機上的敘述,全部改為照實描述(定位資料確實會上傳到我們的伺服器供防作弊與排行榜使用),並補上原先未揭露的
+        雲端存檔內容與第三方接收方。 · What changed in 2.0: following an internal audit on 2026-09-19, statements claiming that GPS data
+        stayed only on this phone have been corrected to describe what the app actually does
+        (location data is uploaded to our server for anti-cheat and leaderboards), and previously undisclosed
+        cloud-save contents and third-party recipients have been added.</p>
       <div class="lang-switch">
         <a href="#zh">中文</a>
         <a href="#en">English</a>
@@ -142,15 +148,28 @@
             <li>在真實地圖上呈現你的採集路徑</li>
             <li>偵測你進入特定區域以觸發採集事件</li>
             <li>偵測 GPS 模擬器、車輛速度等作弊行為</li>
+            <li><strong>好友位置轉播</strong>(2026-09-18 補登記):你主動開始一段分享時,你選的收件者會看到你目前的位置;分享一結束(或超過 12 小時上限),伺服器上那段分享的座標就會被清空,整段紀錄 7 天後刪除。這段期間伺服器會透過 Expo 推播服務送出通知,內容包含你的暱稱與<strong>縣市或地點級</strong>的描述(例如「我現在在臺北市採集」),見第四節。</li>
           </ul>
         </li>
-        <li><strong>儲存位置</strong>:
+        <li><strong>誰看得到</strong>:只有你自己,以及你主動開始分享時所選的收件者(你隨時可以結束分享或封鎖對方,封鎖後推播立刻停止)。營運維運者可在內部儀表板看到近期採集場次的起點,用於除錯與反作弊;該頁反查地名時會把<strong>四捨五入到約 110 公尺</strong>的概略座標送給 OpenStreetMap,見第四節。</li>
+        <li><strong>儲存位置(裝置)</strong>:本機 SQLite 資料庫 <code>gps_trail.db</code>,用於重畫你走過的路線</li>
+        <li><strong>儲存位置(我們的伺服器)</strong>(2026-09-18 更正:原文把「有上傳」寫成「沒有上傳」,與實際行為不符;現行說法如下):<strong>會經 HTTPS 加密上傳</strong>,並與你的玩家代碼(以及綁定後的帳號)關聯:
           <ul>
-            <li>本機 SQLite 資料庫(<code>gps_trail.db</code>):永久保留軌跡點供軌跡重繪</li>
-            <li>雲端伺服器:加密上傳,與你的用戶代號(<code>SF-XXXXXX</code>)關聯</li>
+            <li>採集期間<strong>每 30 秒</strong>上傳一次目前座標與累計距離</li>
+            <li>每一趟的<strong>起點與終點座標</strong>、總距離、時長</li>
+            <li><strong>為什麼要上傳</strong>:里程是排行榜與 $WaWa 經濟的核心數值,若只信任裝置端回報的數字,
+              任何人改一下手機時間或距離就能造假。伺服器端獨立記錄的里程是反作弊上限的唯一來源。
+              這一項<strong>無法關閉</strong>——關掉等於無法參與排行榜與防作弊機制。</li>
           </ul>
         </li>
-        <li><strong>保留期間</strong>:帳號活躍期間;刪除帳號後 30 日內清除</li>
+        <li><strong>保留期間(裝置)</strong>:留存於裝置直到你刪除 App、手動清除 App 資料,或在設定內開啟自動修剪</li>
+        <li><strong>保留期間(伺服器)</strong>:<strong>不自動刪除</strong>——你走過的路線、每一趟的起訖點與統計
+          都會一直留著。<strong>為什麼不刪</strong>:這是你的歷史紀錄,而你登出或換帳號時這支手機上的那一份
+          會被清掉(換人用同一支手機時不該看到前一個人去過哪),所以伺服器上這一份是唯一的一份——
+          設一個到期日就等於到期後把你走過的路刪掉。你可以隨時要求刪除(見第五節);刪除帳號時會一併刪除。</li>
+        <li><strong>保留期間(伺服器・起訖座標)</strong>:每一趟的<strong>起點與終點座標</strong>在上傳 30 日後自動清除——清的是那四個座標欄位本身,<strong>不刪整筆紀錄</strong>:趟數、距離、時長、路線都照留。</li>
+        <li><strong>可以控制的部分</strong>:「不記位置的地方」(設定 &rarr; 隱私)可指定最多 3 個地點,
+          在那些圈裡撿到的東西不會被記進地圖紀錄;圈的位置與範圍<strong>永不上傳</strong>,只存在這支手機。<!-- privacy-claim-ok:privatePlaces --></li>
       </ul>
 
       <h4>2.2 步數與活動類型(必要)</h4>
@@ -158,7 +177,7 @@
         <li><strong>收集內容</strong>:每分鐘步數、活動狀態(walking / running / vehicle / stationary)</li>
         <li><strong>收集時機</strong>:採集模式期間</li>
         <li><strong>為什麼</strong>:反作弊。驗證你的移動是真實步行而非車輛或 GPS 模擬。</li>
-        <li><strong>儲存位置</strong>:<strong>僅本機處理</strong>,不上傳原始感測資料;只上傳「是否作弊」的二元判定結果作為遊戲事件</li>
+        <li><strong>儲存位置</strong>:<strong>僅本機處理</strong>,不上傳原始感測資料;只上傳「是否作弊」的二元判定結果作為遊戲事件<!-- privacy-claim-ok:rawSensorData --></li>
         <li><strong>iOS 來源</strong>:HealthKit + Core Motion</li>
         <li><strong>Android 來源</strong>:Activity Recognition API + Sensor API</li>
       </ul>
@@ -168,17 +187,26 @@
         <li><strong>收集內容</strong>:本 App 主動「建立」一個 Workout Session,類型為 Outdoor Walk</li>
         <li><strong>收集時機</strong>:採集模式啟動時建立、結束時關閉</li>
         <li><strong>為什麼</strong>:HealthKit Workout Session 讓 iOS 系統知道使用者正在運動,保持 App 在背景活躍,避免被 Jetsam 機制終止</li>
-        <li><strong>儲存位置</strong>:<strong>僅本機儲存</strong>(Apple 健康 App 內),本 App 不讀取也不上傳</li>
+        <li><strong>儲存位置</strong>:<strong>僅本機儲存</strong>(Apple 健康 App 內),本 App 不讀取也不上傳<!-- privacy-claim-ok:healthKitNotRead --></li>
         <li><strong>可選</strong>:你可以在 Apple 健康 App → 共享 → 應用程式中關閉此授權;關閉後採集模式會改用備援機制(背景採集成功率會略降)</li>
       </ul>
 
-      <h4>2.4 相機拍攝的食材照片(選用)</h4>
+      <h4>2.4 你拍的照片(選用)</h4>
+      <p>2026-09-18 更正:這一節原本寫「上傳至 Solefood 雲端伺服器,與你的用戶代號關聯」,
+      而卸貨流程的拍照<strong>從來沒有上傳過</strong>(程式碼刻意不讀那個檔案路徑,App 內的四語系文案
+      也一直寫著「照片只存在你的手機裡」)。政策不該宣告一件產品承諾不做的事——已改成描述實際行為。</p>
+      <p><strong>卸貨流程的拍照(星探模式)</strong></p>
       <ul>
-        <li><strong>收集內容</strong>:你主動觸發相機拍攝的食材照片</li>
-        <li><strong>收集時機</strong>:你在卸貨流程內主動按下「拍照」按鈕時</li>
-        <li><strong>為什麼</strong>:作為遊戲採集紀錄與活動兌獎憑證</li>
-        <li><strong>儲存位置</strong>:上傳至 Solefood 雲端伺服器,與你的用戶代號關聯</li>
-        <li><strong>不收集</strong>:相簿內的其他照片、EXIF 資訊(如位置)</li>
+        <li><strong>收集內容</strong>:無。照片<strong>只留在你的手機上</strong>,不會離開裝置。</li>
+        <li><strong>為什麼有相機權限</strong>:拍照這個動作本身在裝置上完成(作為你自己的採集紀錄)。</li>
+        <li><strong>相簿選圖</strong>:食材留言板的貼文可以從相簿選一張照片;該照片同樣<strong>只留在你的手機上</strong>。選圖走系統的照片選擇器,本 App 不會取得整個相簿的存取權。</li>
+      </ul>
+      <p><strong>菜單照片(尚未啟用)</strong></p>
+      <ul>
+        <li><strong>現況</strong>:這個功能<strong>目前沒有開啟</strong>(伺服器端未啟用,App 內也沒有入口)。</li>
+        <li><strong>啟用後會收集什麼</strong>(先寫在這裡,開啟前不會偷偷開始):你選擇上傳的菜單照片原始檔(<strong>包含照片本身的 EXIF 資訊</strong>)、拍攝時間、拍攝當下的座標,以及你的用戶代號。</li>
+        <li><strong>用途</strong>:建立餐廳菜單資料;照片會經過人工審核。</li>
+        <li><strong>刪除</strong>:你刪除帳號時會一併刪除。</li>
       </ul>
 
       <h4>2.5 用戶代號與設定(必要)</h4>
@@ -187,7 +215,10 @@
           <ul>
             <li>用戶代號(首次安裝隨機產生,格式 <code>SF-XXXXXX</code>)</li>
             <li>遊戲設定偏好(語言、教學完成標記)</li>
-            <li>帳號綁定資訊(僅在你主動綁定 email 後)</li>
+            <li>帳號綁定資訊(僅在你主動綁定後):<strong>電子郵件地址與姓名</strong>——
+              使用 Apple 或 Google 登入時由該服務提供(Apple 登入會請求姓名與信箱權限),
+              或你自行以 email 註冊時填入;經由 Firebase Authentication(Google)處理</li>
+            <li>玩家暱稱(你自己設定;會顯示在排行榜、賭局與餐廳評論給其他玩家看)</li>
           </ul>
         </li>
         <li><strong>儲存位置</strong>:本機 AsyncStorage(裝置端);帳號綁定後同步至雲端伺服器</li>
@@ -205,7 +236,23 @@
           </ul>
         </li>
         <li><strong>儲存位置</strong>:Sentry 雲端,與你的用戶代號關聯(<strong>匿名化處理</strong>,不包含 email 或真實姓名)</li>
-        <li><strong>可選 / 預設關閉</strong>:本 App 預設關閉錯誤回報;需在「設定 → 崩潰與錯誤回報」主動開啟才會上傳</li>
+        <li><strong>可選 / 預設關閉</strong>:本 App 預設關閉錯誤回報;需在「設定 → 崩潰與錯誤回報」主動開啟才會上傳,沒開啟時這一筆錯誤哪裡都不會去。你隨時可以關回去。</li>
+        <li><strong>誠實邊界</strong>(2026-09-18 補登記):上面那個開關管的是<strong>你手機上的 App</strong>。伺服器端 API 本身發生錯誤時,我們的伺服器也會送一筆事件給 Sentry,內容含當時請求的用戶代號與 uid(座標會被遮蔽),<strong>這一條不受該開關控制</strong>——它是我們自己的系統日誌,不是你裝置上的資料。</li>
+      </ul>
+
+      <h4>2.7 雲端存檔(綁定帳號後)</h4>
+      <ul>
+        <li><strong>收集內容</strong>:
+          <ul>
+            <li><strong>你走過的地圖範圍</strong>(迷霧格集合,最多 30,000 格六角格編號)</li>
+            <li>圖鑑收集明細、生涯里程、$WaWa 生涯值、背包內容</li>
+            <li>玩家暱稱</li>
+            <li>「不記位置的地方」<strong>設了幾個</strong>(僅數量;圈的位置與範圍永不上傳)</li>
+          </ul>
+        </li>
+        <li><strong>為什麼</strong>:換手機或重裝 App 時還原進度</li>
+        <li><strong>儲存位置</strong>:Solefood 雲端伺服器,與你的帳號關聯</li>
+        <li><strong>保留期間</strong>:帳號存續期間;刪除帳號時一併刪除</li>
       </ul>
 
       <h3>三、我們不會做的事</h3>
@@ -214,18 +261,29 @@
         <li><strong>不會</strong>做跨 App 追蹤(<code>NSPrivacyTracking: false</code>)</li>
         <li><strong>不會</strong>讀取你的聯絡人、通話紀錄、簡訊、瀏覽紀錄</li>
         <li><strong>不會</strong>錄音(麥克風權限僅供未來語音功能保留,目前未使用)</li>
-        <li><strong>不會</strong>讀取相簿內的其他照片(僅相機拍攝即時上傳)</li>
+        <li><strong>不會</strong>讀取相簿內的其他照片——留言板選圖走系統的照片選擇器,你選哪一張我們才拿得到哪一張,而且那張照片<strong>只留在你的手機上</strong>(2026-09-18 更正:原文寫「僅相機拍攝即時上傳」,兩個部分都與實際行為不符)</li>
         <li><strong>不會</strong>在沒有你明確同意的情況下顯示廣告</li>
+        <li><strong>不會</strong>把你的軌跡或人流資料賣給資料仲介、廣告平台或任何第三方</li>
+        <li><strong>不會</strong>上傳「不記位置的地方」的位置與範圍(只上傳你設了幾個)</li>
       </ul>
 
       <h3>四、第三方資料接收方</h3>
+      <p>2026-09-18 補登記:下表原本只有四列,而 Cloudflare、Firebase、Expo、OpenStreetMap
+      <strong>早就在運作中</strong>——是揭露落後於行為,不是新增了接收方。補上之後這張表與程式碼裡
+      每一個對外連線的對象一一對應(由 <code>thirdPartyRecipientDisclosureE10_20260918</code> 這道
+      自動檢查看守:伺服器程式碼出現新的外部服務而這張表沒跟上,建置就會失敗)。</p>
       <table>
         <thead>
           <tr><th>服務</th><th>用途</th><th>資料類型</th><th>隱私政策</th></tr>
         </thead>
         <tbody>
-          <tr><td>Sentry</td><td>崩潰與錯誤診斷</td><td>匿名化錯誤資料</td><td><a href="https://sentry.io/privacy/">連結</a></td></tr>
-          <tr><td>Mapbox</td><td>地圖渲染</td><td>IP(不含 GPS 軌跡)</td><td><a href="https://www.mapbox.com/legal/privacy">連結</a></td></tr>
+          <tr><td>Cloudflare(Workers / D1 / KV / R2)</td><td>本政策所稱「雲端伺服器」本體——API、資料庫、快取與檔案儲存</td><td>第二節所列所有上傳的資料(含 GPS 座標、用戶代號)</td><td><a href="https://www.cloudflare.com/privacypolicy/">連結</a></td></tr>
+          <tr><td>Firebase Authentication / Cloud Firestore(Google)</td><td>帳號綁定與登入驗證;刪除帳號時一併刪除</td><td>Firebase uid、你主動綁定的登入方式(如 email)</td><td><a href="https://firebase.google.com/support/privacy">連結</a></td></tr>
+          <tr><td>Expo Push Service(Expo, exp.host)</td><td>好友位置轉播的推播通知</td><td>收件者的推播 token、分享者的暱稱、<strong>縣市或地點級</strong>的位置描述(不含經緯度)</td><td><a href="https://expo.dev/privacy">連結</a></td></tr>
+          <tr><td>OpenStreetMap(Nominatim)</td><td>內部營運儀表板把採集起點反查成地名</td><td>四捨五入到約 110 公尺的概略座標(不含用戶代號)</td><td><a href="https://osmfoundation.org/wiki/Privacy_Policy">連結</a></td></tr>
+          <tr><td>Sentry</td><td>崩潰與錯誤診斷(預設關閉,需主動開啟)</td><td>裝置型號、OS 版本、堆疊追蹤、玩家代碼;不含座標</td><td><a href="https://sentry.io/privacy/">連結</a></td></tr>
+          <tr><td>Mapbox</td><td>地圖渲染;以及把你走過的路線畫成靜態地圖圖片(結算頁、歷史列表、詳情頁、分享卡)</td><td><strong>精確 GPS 路線</strong>——路線座標會編碼在向 Mapbox 請求圖片的網址中,另包含地圖視野座標與 IP。分享卡用的那一份已裁掉起訖各 200 公尺與「不記位置的地方」圈內的點;其餘三處是完整路線。不含你的帳號或姓名。</td><td><a href="https://www.mapbox.com/legal/privacy">連結</a></td></tr>
+          <tr><td>交通部中央氣象署 開放資料平臺</td><td>查詢天氣以決定當天撿得到什麼</td><td><strong>僅鄉鎮名稱</strong>,不送座標(程式內有機械檢查擋掉任何含座標的查詢參數)</td><td><a href="https://opendata.cwa.gov.tw/">連結</a></td></tr>
           <tr><td>Apple App Store</td><td>App 下載與 IAP(未來啟用)</td><td>由 Apple 處理</td><td><a href="https://www.apple.com/legal/privacy/">連結</a></td></tr>
           <tr><td>Google Play</td><td>App 下載與 IAP(未來啟用)</td><td>由 Google 處理</td><td><a href="https://policies.google.com/privacy">連結</a></td></tr>
         </tbody>
@@ -236,7 +294,7 @@
       <ul>
         <li><strong>查閱權</strong>:請求查閱我們持有你的所有個人資料</li>
         <li><strong>更正權</strong>:請求更正不正確的資料</li>
-        <li><strong>刪除權</strong>:請求刪除你的帳號與所有關聯資料(30 日內完成)</li>
+        <li><strong>刪除權</strong>:你可以<strong>自己在 App 內刪除全部資料</strong>——「帳戶」→「刪除帳號」,會先列出將被刪除的項目(含走過的地圖與每一趟的路線),再要求你輸入「刪除」二字確認;送出後有 <strong>14 天猶豫期</strong>,期間重新登入即可取消,14 天後伺服器端一併清除(座標、路線、迷霧、圖鑑、暱稱、評論等)。也可以寄信請我們代為處理(30 日內完成)。</li>
         <li><strong>資料可攜權</strong>:請求以 JSON 格式匯出你的遊戲資料</li>
         <li><strong>撤回同意權</strong>:撤回先前的同意(部分權限撤回後 App 將無法繼續採集)</li>
       </ul>
@@ -281,10 +339,31 @@
             <li>Render your foraging path on the in-game map</li>
             <li>Trigger zone-based foraging events</li>
             <li>Detect GPS spoofing, vehicle-speed cheating</li>
+            <li><strong>Live sharing with friends</strong> (added to this policy 2026-09-18): when you actively start a sharing session, the recipients you picked can see where you are. When the session ends (or hits the 12-hour cap) the server blanks that session's coordinates, and the record is deleted after 7 days. During the session the server sends notifications through the Expo push service containing your nickname and a <strong>county- or place-level</strong> description (e.g. "I'm foraging in Taipei") — see section 4.</li>
           </ul>
         </li>
-        <li><strong>Stored at</strong>: On-device SQLite (<code>gps_trail.db</code>) — kept for trail replay; Cloud server — encrypted, linked to your user ID (<code>SF-XXXXXX</code>)</li>
-        <li><strong>Retention</strong>: While the account is active; deleted within 30 days of account deletion</li>
+        <li><strong>Who can see it</strong>: you, and the recipients you pick when you start a sharing session (you can end the session or block someone at any time; blocking stops the push immediately). Operations staff can see recent session start points on an internal dashboard for debugging and anti-cheat; when that page resolves a point to a place name it sends coordinates <strong>rounded to roughly 110 metres</strong> to OpenStreetMap — see section 4.</li>
+        <li><strong>Stored at (device)</strong>: Local SQLite database <code>gps_trail.db</code>, used to redraw your route</li>
+        <li><strong>Stored at (our server)</strong> (corrected 2026-09-18 &mdash; the previous wording denied an upload that does in fact happen): <strong>Uploaded over HTTPS (encrypted in transit)</strong>, linked to your player code (and to your account once bound):
+          <ul>
+            <li>Your current coordinates and cumulative distance, uploaded <strong>every 30 seconds</strong> while foraging</li>
+            <li>The <strong>start and end coordinates</strong>, total distance and duration of each outing</li>
+            <li><strong>Why we upload it</strong>: distance drives the leaderboard and the in-game economy. If we trusted only
+              device-reported numbers, anyone could fake them. The server&rsquo;s own record is the sole basis of our anti-cheat
+              distance cap. This upload <strong>cannot be turned off</strong> &mdash; turning it off would mean no leaderboard
+              and no anti-cheat.</li>
+          </ul>
+        </li>
+        <li><strong>Retention (device)</strong>: Kept until you delete the app, clear app data, or enable auto-pruning in Settings</li>
+        <li><strong>Retention (server)</strong>: <strong>Not auto-deleted</strong> — your routes, per-outing start/end points
+          and statistics are kept. <strong>Why we don't delete them</strong>: this is your own history, and the copy on this phone
+          is wiped when you sign out or switch accounts (whoever uses the phone next must not see where you have been), so the
+          server copy is the only one — an expiry date would mean deleting the paths you walked. You can request deletion at any
+          time (see section 5), and everything is removed when you delete your account.</li>
+        <li><strong>Retention (server &mdash; start/end coordinates)</strong>: each outing&rsquo;s <strong>start and end coordinates</strong> are erased automatically 30 days after upload. Only those four coordinate fields are cleared; <strong>the record itself is not deleted</strong> &mdash; outing count, distance, duration and route all remain.</li>
+        <li><strong>What you can control</strong>: &ldquo;Places that aren&rsquo;t recorded&rdquo; (Settings &rarr; Privacy) lets you
+          designate up to 3 locations; items picked up inside those circles are not written to your map record. The circles
+          themselves are <strong>never uploaded</strong> and exist only on this phone.</li>
       </ul>
 
       <h4>2.2 Step Count and Activity Type (Required)</h4>
@@ -292,31 +371,58 @@
         <li><strong>What</strong>: Steps per minute, activity state (walking / running / vehicle / stationary)</li>
         <li><strong>When</strong>: During foraging mode</li>
         <li><strong>Why</strong>: Anti-cheat. Verify that movement is real walking, not vehicle or GPS simulator.</li>
-        <li><strong>Stored at</strong>: <strong>On-device only</strong>. Raw sensor data is never uploaded. Only the boolean "cheat detected" result is sent as a game event.</li>
+        <li><strong>Stored at</strong>: <strong>On-device only</strong>. Raw sensor data is never uploaded. Only the boolean "cheat detected" result is sent as a game event.<!-- privacy-claim-ok:rawSensorData --></li>
       </ul>
 
       <h4>2.3 HealthKit Workout Session (iOS only, Required)</h4>
       <ul>
         <li><strong>What</strong>: The App creates a Workout Session (type: Outdoor Walk)</li>
         <li><strong>Why</strong>: Keeps iOS aware that the user is exercising, preventing Jetsam from terminating the App in background</li>
-        <li><strong>Stored at</strong>: <strong>On-device only</strong> (in Apple Health app). The App does not read your Health data or upload it.</li>
+        <li><strong>Stored at</strong>: <strong>On-device only</strong> (in Apple Health app). The App does not read your Health data or upload it.<!-- privacy-claim-ok:healthKitNotRead --></li>
       </ul>
 
-      <h4>2.4 Camera Photos of Foraged Items (Optional)</h4>
+      <h4>2.4 Photos You Take (Optional)</h4>
+      <p>Corrected 2026-09-18: this section used to read "Uploaded to Solefood cloud servers, linked to your
+      user ID", but the unload-flow photo <strong>has never been uploaded</strong> (the code deliberately never
+      reads that file path, and the in-app copy in all four languages has always said "photos stay on your
+      phone"). A policy should not claim something the product promises not to do — it now describes the
+      actual behaviour.</p>
+      <p><strong>Unload-flow photo (scout mode)</strong></p>
       <ul>
-        <li><strong>What</strong>: Photos you actively capture during the unload flow</li>
-        <li><strong>Why</strong>: Foraging records and event reward proofs</li>
-        <li><strong>Stored at</strong>: Uploaded to Solefood cloud servers, linked to your user ID</li>
-        <li><strong>Not collected</strong>: Other photos in your library; EXIF metadata (including location)</li>
+        <li><strong>What we collect</strong>: nothing. The photo <strong>stays on your phone</strong> and never leaves the device.</li>
+        <li><strong>Why the camera permission</strong>: taking the photo happens entirely on the device (as your own foraging record).</li>
+        <li><strong>Picking from your library</strong>: a message-board post can attach one photo from your library; that photo likewise <strong>stays on your phone</strong>. Picking goes through the system photo picker, so the App never gains access to your whole library.</li>
+      </ul>
+      <p><strong>Menu photos (not yet enabled)</strong></p>
+      <ul>
+        <li><strong>Status</strong>: this feature is <strong>currently off</strong> (disabled server-side, and there is no entry point in the App).</li>
+        <li><strong>What it would collect once enabled</strong> (written down in advance — it will not start quietly): the original menu photo file you choose to upload (<strong>including its EXIF metadata</strong>), the capture time, the coordinates at capture time, and your user ID.</li>
+        <li><strong>Purpose</strong>: building restaurant menu data; photos are human-reviewed.</li>
+        <li><strong>Deletion</strong>: removed when you delete your account.</li>
       </ul>
 
       <h4>2.5 User ID and Preferences (Required)</h4>
-      <p>User ID, game preferences, account binding info. Stored on-device (AsyncStorage); synced to cloud only after account binding.</p>
+      <p>User ID and game preferences, stored on-device (AsyncStorage); synced to the cloud after account binding.</p>
+      <p>Account binding also collects your <strong>email address and name</strong> &mdash; provided by Apple or Google when you
+        sign in with them (Apple Sign-In requests the full-name and email scopes), or entered by you when registering with an
+        email address. Handled via Firebase Authentication (Google). Your <strong>player nickname</strong> is also collected and is
+        shown to other players on leaderboards, in wagers and in restaurant reviews.</p>
+
+      <h4>2.7 Cloud Save (after account binding)</h4>
+      <ul>
+        <li><strong>What</strong>: the <strong>map area you have walked</strong> (fog-of-war hex set, up to 30,000 hex ids),
+          your collection index, lifetime distance, lifetime $WaWa, inventory contents, nickname, and the
+          <strong>number</strong> of &ldquo;places that aren&rsquo;t recorded&rdquo; you have set (count only &mdash; never the locations)</li>
+        <li><strong>Why</strong>: to restore your progress on a new phone or after reinstalling</li>
+        <li><strong>Stored at</strong>: Solefood cloud servers, linked to your account</li>
+        <li><strong>Retention</strong>: for the life of the account; deleted when you delete your account</li>
+      </ul>
 
       <h4>2.6 Crash and Error Diagnostics (Optional / Third Party)</h4>
       <ul>
         <li><strong>Sent to</strong>: <strong>Sentry</strong> (Functional Software, Inc., <a href="https://sentry.io">sentry.io</a>)</li>
-        <li><strong>Optional / Off by default</strong>: Crash reporting is OFF by default; you must actively enable it in Settings → Crash and Error Reports.</li>
+        <li><strong>Optional / Off by default</strong>: Crash reporting is OFF by default; you must actively enable it in Settings → Crash and Error Reports, and while it is off such an error goes nowhere at all. You can turn it back off at any time.</li>
+        <li><strong>Honest boundary</strong> (added 2026-09-18): that toggle governs <strong>the App on your phone</strong>. When our server-side API itself errors, our server also sends an event to Sentry containing the requesting user ID and uid (coordinates are redacted); <strong>that path is not governed by the toggle</strong> — it is our own system log, not data from your device.</li>
       </ul>
 
       <h3>3. What We Do NOT Do</h3>
@@ -325,16 +431,29 @@
         <li>We do <strong>NOT</strong> track you across other apps (<code>NSPrivacyTracking: false</code>)</li>
         <li>We do <strong>NOT</strong> read your contacts, call logs, SMS, or browsing history</li>
         <li>We do <strong>NOT</strong> record audio (microphone permission reserved for future voice features, currently unused)</li>
-        <li>We do <strong>NOT</strong> read other photos in your library (only camera-captured photos, uploaded in real time)</li>
+        <li>We do <strong>NOT</strong> read other photos in your library — message-board picking goes through the system photo picker, so we only ever receive the one photo you chose, and that photo <strong>stays on your phone</strong> (corrected 2026-09-18: this used to read "only camera-captured photos, uploaded in real time"; both halves of that were wrong)</li>
         <li>We do <strong>NOT</strong> show ads without your explicit consent</li>
+        <li>We do <strong>NOT</strong> sell your trails or footfall data to data brokers, ad platforms or any third party</li>
+        <li>We do <strong>NOT</strong> upload the location or radius of your &ldquo;places that aren&rsquo;t recorded&rdquo; (only how many you set)</li>
       </ul>
 
       <h3>4. Third-Party Data Recipients</h3>
+      <p>Added 2026-09-18: this table used to list only four entries, while Cloudflare, Firebase,
+      Expo and OpenStreetMap <strong>were already in use</strong> — the disclosure had fallen behind
+      the behaviour; these are not newly added recipients. The table now corresponds one-to-one with
+      every outbound service in the server code, and an automated check
+      (<code>thirdPartyRecipientDisclosureE10_20260918</code>) fails the build if the code gains an
+      outbound service that this table does not list.</p>
       <table>
         <thead><tr><th>Service</th><th>Purpose</th><th>Data Type</th><th>Privacy</th></tr></thead>
         <tbody>
-          <tr><td>Sentry</td><td>Crash &amp; error diagnostics</td><td>Anonymized error data</td><td><a href="https://sentry.io/privacy/">link</a></td></tr>
-          <tr><td>Mapbox</td><td>Map rendering</td><td>IP address (no GPS trails)</td><td><a href="https://www.mapbox.com/legal/privacy">link</a></td></tr>
+          <tr><td>Cloudflare (Workers / D1 / KV / R2)</td><td>The "cloud server" this policy refers to — API, database, cache and file storage</td><td>Everything uploaded per section 2 (including GPS coordinates and your user ID)</td><td><a href="https://www.cloudflare.com/privacypolicy/">link</a></td></tr>
+          <tr><td>Firebase Authentication / Cloud Firestore (Google)</td><td>Account binding and sign-in verification; deleted along with your account</td><td>Firebase uid, and the sign-in method you actively bound (e.g. email)</td><td><a href="https://firebase.google.com/support/privacy">link</a></td></tr>
+          <tr><td>Expo Push Service (Expo, exp.host)</td><td>Push notifications for live sharing with friends</td><td>Recipient's push token, sharer's nickname, and a <strong>county- or place-level</strong> location description (no latitude/longitude)</td><td><a href="https://expo.dev/privacy">link</a></td></tr>
+          <tr><td>OpenStreetMap (Nominatim)</td><td>Internal operations dashboard resolving session start points to place names</td><td>Coordinates rounded to roughly 110 metres (no user ID)</td><td><a href="https://osmfoundation.org/wiki/Privacy_Policy">link</a></td></tr>
+          <tr><td>Sentry</td><td>Crash &amp; error diagnostics (off by default; must be enabled by you)</td><td>Device model, OS version, stack traces, player code; no coordinates</td><td><a href="https://sentry.io/privacy/">link</a></td></tr>
+          <tr><td>Mapbox</td><td>Map rendering; and rendering your walked route as a static map image (summary screen, history list, detail page, share card)</td><td><strong>Precise GPS route</strong> &mdash; the route coordinates are encoded into the image request URL, along with map viewport coordinates and your IP. The share-card copy has the first and last 200 m plus any points inside your &ldquo;places that aren&rsquo;t recorded&rdquo; removed; the other three surfaces send the full route. Does not include your account or name.</td><td><a href="https://www.mapbox.com/legal/privacy">link</a></td></tr>
+          <tr><td>Central Weather Administration Open Data (Taiwan)</td><td>Weather lookup that decides what is findable today</td><td><strong>Township name only</strong> &mdash; no coordinates (a mechanical check in the code rejects any query parameter containing coordinates)</td><td><a href="https://opendata.cwa.gov.tw/">link</a></td></tr>
           <tr><td>Apple App Store</td><td>App distribution &amp; IAP (future)</td><td>Handled by Apple</td><td><a href="https://www.apple.com/legal/privacy/">link</a></td></tr>
           <tr><td>Google Play</td><td>App distribution &amp; IAP (future)</td><td>Handled by Google</td><td><a href="https://policies.google.com/privacy">link</a></td></tr>
         </tbody>
@@ -345,7 +464,7 @@
       <ul>
         <li><strong>Right of access</strong>: Request access to all personal data we hold about you</li>
         <li><strong>Right to rectification</strong>: Request correction of inaccurate data</li>
-        <li><strong>Right to erasure</strong>: Request deletion of your account and all linked data (within 30 days)</li>
+        <li><strong>Right to erasure</strong>: You can <strong>delete all of your data yourself in the app</strong> &mdash; Account &rarr; Delete account. It first lists what will be removed (including the map you uncovered and every route you walked), then asks you to type a confirmation word. After you submit there is a <strong>14-day grace period</strong> during which signing back in cancels the deletion; after that the server-side data is purged too (coordinates, routes, fog-of-war, collection, nickname, reviews). You can also email us to do it for you (completed within 30 days).</li>
         <li><strong>Right to data portability</strong>: Request export of your game data as JSON</li>
         <li><strong>Right to withdraw consent</strong>: Withdraw prior consent (some permissions, once revoked, will prevent the App from continuing to forage)</li>
       </ul>
@@ -372,8 +491,8 @@
       <hr>
 
       <p class="meta">
-        <strong>Document version</strong>: 1.0 ·
-        <strong>Effective</strong>: 2026-05-15 ·
+        <strong>Document version</strong>: 2.0 ·
+        <strong>Effective</strong>: 2026-09-20 ·
         Source: <a href="https://github.com/stu5737/solefood/blob/main/PRIVACY.md">PRIVACY.md</a> ·
         <a href="https://stu5737.github.io/solefood/terms/">服務條款 · Terms of Service</a>
       </p>
