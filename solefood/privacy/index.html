@@ -115,8 +115,14 @@
   <body>
     <article class="wrap">
       <h1>Solefood Privacy Policy</h1>
-      <p class="meta"><strong>最後更新 · Last updated</strong>: 2026-09-23 ·
-        <strong>版本 · Version</strong>: 2.1</p>
+      <p class="meta"><strong>最後更新 · Last updated</strong>: 2026-11-01 ·
+        <strong>版本 · Version</strong>: 2.3</p>
+      <p class="meta">2.3 的改動:新增 2.5a「裝置識別碼」——App 送到我們所有 API 的每一個請求都會附上本 App 的安裝識別碼(重裝會換、不是廣告識別碼),綁在你的帳號上,用來讓同一個帳號一次只在一支手機上玩。
+        · What changed in 2.3: new section 2.5a &ldquo;Device Identifier&rdquo; &mdash; every request the App sends to our API carries the
+        App&rsquo;s install identifier (new on reinstall, not an advertising ID), linked to your account, so that one account plays on only one phone at a time.</p>
+      <p class="meta">2.2 的改動:新增 2.1a「你在哪裡撿到食材」(約 100 公尺一格的粗略收藏紀錄,跟著帳號保存、只有你看得到);2.5 補上「你選的頭像」。
+        · What changed in 2.2: new section 2.1a &ldquo;Where you picked up ingredients&rdquo; (a coarse ~100 m collection record kept
+        with your account and visible only to you); section 2.5 now mentions the avatar you picked.</p>
       <p class="meta">2.1 的改動:每一趟的起點與終點座標,從「上傳 30 日後自動清除」改成目前保留,和路線、距離、時長一樣不會自動刪除。
         · What changed in 2.1: each outing&rsquo;s start and end coordinates are now kept rather than erased 30 days after upload,
         the same as your route, distance and duration.</p>
@@ -145,6 +151,7 @@
       <ul>
         <li><strong>收集內容</strong>:經緯度、時間戳、GPS 精度、行動速度、行動方向</li>
         <li><strong>收集時機</strong>:採集模式啟動後持續收集(前景 + 背景)</li>
+        <li><strong>一句話</strong>:走路路線會上傳到我們的伺服器,作為你的走路歷史永久保留。</li>
         <li><strong>為什麼</strong>:
           <ul>
             <li>計算你的步行距離(遊戲核心進度指標)</li>
@@ -175,6 +182,23 @@
           在那些圈裡撿到的東西不會被記進地圖紀錄;圈的位置與範圍<strong>永不上傳</strong>,只存在這支手機。<!-- privacy-claim-ok:privatePlaces --></li>
       </ul>
 
+      <h4>2.1a 你在哪裡撿到食材(粗略收藏紀錄)</h4>
+      <ul>
+        <li><strong>收集內容</strong>:你撿到食材的<strong>約 100 公尺見方的格子代號</strong>、哪一種食材、第一次與最後一次在那一格撿到的<strong>日期</strong>、次數;
+          以及每種食材第一次遇到的日期與縣市、最後一次遇到的時間、遇過幾次。<strong>不含精確座標,也不含幾點幾分。</strong></li>
+        <li><strong>為什麼</strong>:讓卡背的「你的紀錄」與地圖故事跟著你的帳號走——換手機或重裝後不會歸零。</li>
+        <li><strong>儲存位置</strong>:手機本機,以及帳號綁定後的雲端伺服器(HTTPS,與你的用戶代號關聯)。</li>
+        <li><strong>誰看得到</strong>:只有你自己。</li>
+        <li><strong>保留期間</strong>:跟你的帳號一樣久,不自動刪除;刪除帳號時一併刪除。</li>
+        <li><strong>你能控制的部分</strong>:
+          <ul>
+            <li>「不記位置的地方」(最多 3 個)裡撿到的東西不會記下、也不會送出;<strong>新增一個圈時,圈內以前已經上傳的格子也會從伺服器刪除</strong>。</li>
+            <li>「完全不記位置」開關:打開後以後都不記(之前的不會自動刪)。</li>
+            <li>地圖故事的「全部清除」會同時清除手機與伺服器上的這份紀錄。</li>
+          </ul>
+        </li>
+      </ul>
+
       <h4>2.2 步數與活動類型(必要)</h4>
       <ul>
         <li><strong>收集內容</strong>:每分鐘步數、活動狀態(walking / running / vehicle / stationary)</li>
@@ -201,13 +225,20 @@
       <p><strong>卸貨流程的拍照(星探模式)</strong></p>
       <ul>
         <li><strong>收集內容</strong>:無。照片<strong>只留在你的手機上</strong>,不會離開裝置。</li>
-        <li><strong>為什麼有相機權限</strong>:拍照這個動作本身在裝置上完成(作為你自己的採集紀錄)。</li>
+        <li><strong>為什麼有相機權限</strong>:在餐廳卸貨時拍菜單打卡;拍照這個動作本身在裝置上完成(作為你自己的採集紀錄)。</li>
         <li><strong>相簿選圖</strong>:食材留言板的貼文可以從相簿選一張照片;該照片同樣<strong>只留在你的手機上</strong>。選圖走系統的照片選擇器,本 App 不會取得整個相簿的存取權。</li>
+      </ul>
+      <p><strong>餐桌日記的照片</strong></p>
+      <ul>
+        <li><strong>用途</strong>:拍下(或從相簿選一張)你吃到的料理,記進你的餐桌日記、打開這道菜的知識頁。照片只換知識和紀錄,<strong>不換任何獎勵</strong>。</li>
+        <li><strong>在手機上先處理</strong>:照片在你的手機上就<strong>剝除 EXIF 與位置資訊</strong>;日記只記「鄉鎮+月份」,不記精確座標與精確時間。</li>
+        <li><strong>存在哪裡</strong>:<strong>只存在你的手機上</strong>,<strong>預設不上傳</strong>。不做人臉辨識。</li>
+        <li><strong>我們的承諾</strong>(定案措辭;要改會先公告、並在 App 內告知):<blockquote>關於你拍的菜和餐桌日記：你拍的照片只在你手機上。會離開你手機的只有「菜名×鄉鎮×月份」的次數；同一格至少 3 個人才看得到。我們不賣、不把資料整包給任何第三方；我們自己的 AI 助手會用這些彙總來回答「附近吃什麼」。</blockquote>這段承諾<strong>只適用於你拍的菜和餐桌日記</strong>,不是整支 App 的說法——你走路的路線會上傳,見 2.1。第一版連這份次數都還沒有送出(App 內沒有任何會送出餐桌日記資料的程式)。</li>
       </ul>
       <p><strong>菜單照片(尚未啟用)</strong></p>
       <ul>
-        <li><strong>現況</strong>:這個功能<strong>目前沒有開啟</strong>(伺服器端未啟用,App 內也沒有入口)。</li>
-        <li><strong>啟用後會收集什麼</strong>(先寫在這裡,開啟前不會偷偷開始):你選擇上傳的菜單照片原始檔(<strong>包含照片本身的 EXIF 資訊</strong>)、拍攝時間、拍攝當下的座標,以及你的用戶代號。</li>
+        <li><strong>現況</strong>:這個功能<strong>目前沒有開啟</strong>——App 內<strong>沒有任何會上傳菜單照片的入口</strong>(上傳程式還留著、伺服器端點也還在,但 App 從不呼叫)。餐桌日記的照片<strong>不走這條路</strong>。</li>
+        <li><strong>啟用後會收集什麼</strong>(先寫在這裡,開啟前不會偷偷開始):你選擇上傳的菜單照片原始檔(<strong>目前的上傳程式不會先剝除照片本身的 EXIF 資訊</strong>)、拍攝時間、拍攝當下的座標,以及你的用戶代號。啟用前會先改成與餐桌日記同樣在手機上剝除 EXIF,並同步更新本節。</li>
         <li><strong>用途</strong>:建立餐廳菜單資料;照片會經過人工審核。</li>
         <li><strong>刪除</strong>:你刪除帳號時會一併刪除。</li>
       </ul>
@@ -217,7 +248,7 @@
         <li><strong>收集內容</strong>:
           <ul>
             <li>用戶代號(首次安裝隨機產生,格式 <code>SF-XXXXXX</code>)</li>
-            <li>遊戲設定偏好(語言、教學完成標記)</li>
+            <li>遊戲設定偏好(語言、教學完成標記、你選的頭像)</li>
             <li>帳號綁定資訊(僅在你主動綁定後):<strong>電子郵件地址與姓名</strong>——
               使用 Apple 或 Google 登入時由該服務提供(Apple 登入會請求姓名與信箱權限),
               或你自行以 email 註冊時填入;經由 Firebase Authentication(Google)處理</li>
@@ -226,6 +257,15 @@
         </li>
         <li><strong>儲存位置</strong>:本機 AsyncStorage(裝置端);帳號綁定後同步至雲端伺服器</li>
         <li><strong>為什麼</strong>:辨識同一裝置的回訪使用者、跨裝置同步進度(綁定後)</li>
+      </ul>
+
+      <h4>2.5a 裝置識別碼(必要)</h4>
+      <ul>
+        <li><strong>收集內容</strong>:本 App 的安裝識別碼(install_id)——App 第一次啟動時隨機產生的一串 UUID,存在 App 本機;<strong>重裝 App 會換一個</strong>。它<strong>不是</strong>廣告識別碼(IDFA/AAID),也不是手機的硬體序號。另附送出當下的手機時間(用來估手機與伺服器的時鐘差)。</li>
+        <li><strong>什麼時候送</strong>:<strong>會送到我們所有的 API</strong>——App 對我們自家伺服器發出的每一個請求都會附上(以請求標頭 <code>X-Device-Id</code>/<code>X-Client-Time</code> 傳送),包含採集場次、卸貨、存檔同步、錢包帳本、社群與排行榜等。讀不到識別碼時不送。若你在隱私設定開啟「上傳使用統計」,它也會隨每日使用統計一起送。</li>
+        <li><strong>綁不綁身分</strong>:<strong>綁</strong>。它和你的用戶代號、登入憑證在同一個請求裡送出,伺服器會把它記在你的帳號上。</li>
+        <li><strong>為什麼</strong>:同一個帳號一次只能在一支手機上玩(判斷這個帳號現在是哪一支手機在玩),以及同一時段的距離只算一份。<strong>不用於廣告,也不做跨 App 追蹤。</strong></li>
+        <li><strong>保留期間(伺服器)</strong>:記在帳號的「目前是哪一支手機」與換手紀錄、以及每一趟採集紀錄上,不自動刪除(與你的歷史軌跡同級);<strong>你刪除帳號時一併刪除</strong>。</li>
       </ul>
 
       <h4>2.6 崩潰與錯誤診斷資料(選用 / 第三方)</h4>
@@ -317,6 +357,7 @@
 
       <h3>八、變更通知</h3>
       <p>本政策修改時,我們會在 App 內顯示更新提示,並要求你重新檢視。重大變更(例如新增資料類別、新增第三方接收方)需要你主動再同意。</p>
+      <p>這一版新增的 2.1a「你在哪裡撿到食材」是 2.1 節位置資料的延伸(粒度更粗、只有你自己看得到),不是新的資料類別,所以只在 App 內顯示一次更新提示,並附上可以關掉這份紀錄的設定入口。</p>
 
       <h3>九、爭議處理</h3>
       <p>若你對本政策有疑慮,請先聯絡 <strong>stepnxadidas@gmail.com</strong>。若無法獲得滿意解決,依當地法律(台灣 / 你所在司法管轄區)申訴。</p>
@@ -336,6 +377,7 @@
       <ul>
         <li><strong>What</strong>: Latitude/longitude, timestamps, GPS accuracy, speed, heading</li>
         <li><strong>When</strong>: Continuously during foraging mode (foreground + background)</li>
+        <li><strong>In one sentence</strong>: Your walking routes are uploaded to our server, and kept permanently as your walking history.</li>
         <li><strong>Why</strong>:
           <ul>
             <li>Calculate walking distance (core gameplay progress)</li>
@@ -369,6 +411,26 @@
           themselves are <strong>never uploaded</strong> and exist only on this phone.</li>
       </ul>
 
+      <h4>2.1a Where you picked up ingredients (coarse collection record)</h4>
+      <ul>
+        <li><strong>What</strong>: the <strong>~100 m grid cell</strong> where you picked something up, which ingredient, the first and last
+          <strong>date</strong> you picked it in that cell, and how many times; plus, per ingredient, the date and county of your first
+          encounter, the time of your latest encounter and the total count. <strong>No precise coordinates and no time of day.</strong></li>
+        <li><strong>Why</strong>: so the &ldquo;Your record&rdquo; side of each card and your map stories follow your account &mdash; they are
+          not lost when you change or reinstall your phone.</li>
+        <li><strong>Stored at</strong>: on your phone, and &mdash; once your account is bound &mdash; on our cloud server (HTTPS, linked to your user ID).</li>
+        <li><strong>Who can see it</strong>: only you.</li>
+        <li><strong>Retention</strong>: as long as your account exists; not auto-deleted; removed when you delete your account.</li>
+        <li><strong>What you control</strong>:
+          <ul>
+            <li>Pickups inside &ldquo;places that aren&rsquo;t recorded&rdquo; (up to 3) are neither recorded nor sent; <strong>when you add a
+              place, cells inside it that were uploaded earlier are deleted from the server too.</strong></li>
+            <li>&ldquo;Don&rsquo;t record locations at all&rdquo;: from then on nothing is recorded (earlier records are not deleted automatically).</li>
+            <li>&ldquo;Clear all&rdquo; in map stories clears this record on both your phone and the server.</li>
+          </ul>
+        </li>
+      </ul>
+
       <h4>2.2 Step Count and Activity Type (Required)</h4>
       <ul>
         <li><strong>What</strong>: Steps per minute, activity state (walking / running / vehicle / stationary)</li>
@@ -393,23 +455,39 @@
       <p><strong>Unload-flow photo (scout mode)</strong></p>
       <ul>
         <li><strong>What we collect</strong>: nothing. The photo <strong>stays on your phone</strong> and never leaves the device.</li>
-        <li><strong>Why the camera permission</strong>: taking the photo happens entirely on the device (as your own foraging record).</li>
+        <li><strong>Why the camera permission</strong>: to photograph the menu when checking in at a restaurant during unloading; taking the photo happens entirely on the device (as your own foraging record).</li>
         <li><strong>Picking from your library</strong>: a message-board post can attach one photo from your library; that photo likewise <strong>stays on your phone</strong>. Picking goes through the system photo picker, so the App never gains access to your whole library.</li>
+      </ul>
+      <p><strong>Table Diary photos</strong></p>
+      <ul>
+        <li><strong>Purpose</strong>: photograph (or pick from your library) a dish you ate, add it to your Table Diary, and open that dish's info page. Photos only earn knowledge and records — <strong>never any reward</strong>.</li>
+        <li><strong>Processed on your phone first</strong>: EXIF and location data are <strong>stripped on your phone</strong>; the diary keeps only the township and month, not precise coordinates or time.</li>
+        <li><strong>Where it is stored</strong>: <strong>only on your phone</strong>, and <strong>not uploaded by default</strong>. No face recognition.</li>
+        <li><strong>Our promise</strong> (final wording; if it ever changes we will announce it first and tell you in the App):<blockquote>About your dish photos and Table Diary: the photos you take stay only on your phone. The only thing that leaves your phone is a count of &quot;dish × township × month&quot;, and a cell is visible only once at least 3 people have logged it. We don't sell your data or hand it over in bulk to any third party; our own AI assistant uses these totals to answer &quot;what's good to eat nearby&quot;.</blockquote>This promise covers <strong>only your dish photos and Table Diary</strong>, not the whole App — your walking routes are uploaded; see 2.1. The first version does not send even these counts yet (nothing in the App sends Table Diary data).</li>
       </ul>
       <p><strong>Menu photos (not yet enabled)</strong></p>
       <ul>
-        <li><strong>Status</strong>: this feature is <strong>currently off</strong> (disabled server-side, and there is no entry point in the App).</li>
-        <li><strong>What it would collect once enabled</strong> (written down in advance — it will not start quietly): the original menu photo file you choose to upload (<strong>including its EXIF metadata</strong>), the capture time, the coordinates at capture time, and your user ID.</li>
+        <li><strong>Status</strong>: this feature is <strong>currently off</strong> — the App has <strong>no entry point that uploads a menu photo</strong> (the upload code and server endpoint still exist, but the App never calls them). Table Diary photos <strong>do not use this path</strong>.</li>
+        <li><strong>What it would collect once enabled</strong> (written down in advance — it will not start quietly): the original menu photo file you choose to upload (<strong>the current upload code does not strip its EXIF metadata first</strong>), the capture time, the coordinates at capture time, and your user ID. Before enabling it, we will switch it to the same on-phone EXIF stripping as the Table Diary and update this section.</li>
         <li><strong>Purpose</strong>: building restaurant menu data; photos are human-reviewed.</li>
         <li><strong>Deletion</strong>: removed when you delete your account.</li>
       </ul>
 
       <h4>2.5 User ID and Preferences (Required)</h4>
-      <p>User ID and game preferences, stored on-device (AsyncStorage); synced to the cloud after account binding.</p>
+      <p>User ID and game preferences (including the avatar you picked), stored on-device (AsyncStorage); synced to the cloud after account binding.</p>
       <p>Account binding also collects your <strong>email address and name</strong> &mdash; provided by Apple or Google when you
         sign in with them (Apple Sign-In requests the full-name and email scopes), or entered by you when registering with an
         email address. Handled via Firebase Authentication (Google). Your <strong>player nickname</strong> is also collected and is
         shown to other players on leaderboards, in wagers and in restaurant reviews.</p>
+
+      <h4>2.5a Device Identifier (Required)</h4>
+      <ul>
+        <li><strong>What</strong>: the App&rsquo;s install identifier (install_id) &mdash; a random UUID generated the first time the App launches and stored inside the App on your phone; <strong>reinstalling the App creates a new one</strong>. It is <strong>not</strong> an advertising identifier (IDFA/AAID) and not a hardware serial number. The phone&rsquo;s current time at sending is attached too (to estimate the clock difference between phone and server).</li>
+        <li><strong>When it is sent</strong>: <strong>with every request to our API</strong> &mdash; every request the App makes to our own servers carries it (as the request headers <code>X-Device-Id</code> / <code>X-Client-Time</code>), including outings, unloading, save sync, the wallet ledger, community features and leaderboards. If the identifier cannot be read, nothing is sent. If you turn on &ldquo;Upload usage statistics&rdquo; in privacy settings, it is also sent with the daily usage statistics.</li>
+        <li><strong>Linked to you</strong>: <strong>yes</strong>. It travels in the same request as your user ID and sign-in credential, and the server records it on your account.</li>
+        <li><strong>Why</strong>: so that one account plays on only one phone at a time (the server works out which phone is currently playing on the account), and distance from the same time period is counted only once. <strong>Not used for advertising and not used to track you across apps.</strong></li>
+        <li><strong>Retention (server)</strong>: kept on your account&rsquo;s &ldquo;current phone&rdquo; record, its hand-over history and each outing record, with no automatic deletion (same as your trail history); <strong>deleted when you delete your account</strong>.</li>
+      </ul>
 
       <h4>2.7 Cloud Save (after account binding)</h4>
       <ul>
@@ -487,6 +565,7 @@
 
       <h3>8. Notice of Changes</h3>
       <p>When we update this policy, we will display an in-app notice and ask you to review. Material changes (e.g., new data categories, new third-party recipients) require fresh, active consent.</p>
+      <p>The new section 2.1a (&ldquo;Where you picked up ingredients&rdquo;) in this version extends the location data already covered in section 2.1 (it is coarser and visible only to you); it is not a new data category, so we show a one-time in-app update notice with a link to the setting that turns this record off.</p>
 
       <h3>9. Disputes</h3>
       <p>If you have concerns about this policy, please first email <strong>stepnxadidas@gmail.com</strong>. If you cannot reach a satisfactory resolution, you may file a complaint under the applicable law of your jurisdiction (Taiwan / your country of residence).</p>
@@ -494,8 +573,8 @@
       <hr>
 
       <p class="meta">
-        <strong>Document version</strong>: 2.1 ·
-        <strong>Effective</strong>: 2026-09-23 ·
+        <strong>Document version</strong>: 2.3 ·
+        <strong>Effective</strong>: 2026-11-01 ·
         Source: <a href="https://github.com/stu5737/solefood/blob/main/PRIVACY.md">PRIVACY.md</a> ·
         <a href="https://stu5737.github.io/solefood/terms/">服務條款 · Terms of Service</a>
       </p>
